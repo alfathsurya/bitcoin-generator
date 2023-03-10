@@ -29,8 +29,8 @@ insight.getUnspentUtxos(address, function(err, utxos){
     tx.change(address);
     tx.fee(10000); //bitcoin will include fee by default, but its better to be safe
     tx.sign(privateKey); //otherwise error: "Some inputs have not been fully signed"
-    // console.log('transaction:');
-    // console.log(tx.toObject());
+    console.log('transaction:');
+    console.log(tx.toObject());
     tx.serialize();
     console.log('serialized output:');
     console.log(tx.serialize());//broadcast this value to: https://test-insight.bitpay.com/tx/send
