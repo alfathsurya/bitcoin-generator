@@ -8,8 +8,8 @@ var privateKey = bitcore.PrivateKey.fromWIF(privateKeyWIF);
 
 var address = privateKey.toAddress();
 
-// console.log('address:');//my9Vu7otfnLJE4QwwqYzfBC2DzvrRPr2an
-// console.log(address);
+console.log('address:');//my9Vu7otfnLJE4QwwqYzfBC2DzvrRPr2an
+console.log(address);
 
 //current fee estimation: 0.00073 BTC/KB
 
@@ -18,8 +18,8 @@ var value = new Buffer('this is a way to generate an address from a string-risky
 var hash = bitcore.crypto.Hash.sha256(value);
 var bn = bitcore.crypto.BN.fromBuffer(hash);
 var address2 = new bitcore.PrivateKey(bn, 'testnet').toAddress();
-// console.log('address2:');
-// console.log(address2);
+console.log('address2:');
+console.log(address2);
 
 var Insight = require('bitcore-explorers').Insight;
 var insight = new Insight('testnet');
@@ -40,22 +40,22 @@ insight.getUnspentUtxos(address, function(err, utxos){
     tx.change(address);
     tx.fee(50000); //bitcoin will include fee by default, but its better to be safe
     tx.sign(privateKey); //otherwise error: "Some inputs have not been fully signed"
-    // console.log('transaction:');
-    // console.log(tx.toObject());
+    console.log('transaction:');
+    console.log(tx.toObject());
     tx.serialize();
     console.log('serialized output:');
     console.log(tx.serialize());//broadcast this value to: https://test-insight.bitpay.com/tx/send
     
 //script printing
-// var sprintIn = bitcore.Script(tx.toObject().inputs[0].script);
-// console.log('input script string:');
-// console.log(scriptIn.toString());
-// var scriptOut = bitcore.Script(tx.toObject().output[0].script);
-// console.log('output script string:');
-// console.log(scriptOut.toString());
+var sprintIn = bitcore.Script(tx.toObject().inputs[0].script);
+console.log('input script string:');
+console.log(scriptIn.toString());
+var scriptOut = bitcore.Script(tx.toObject().output[0].script);
+console.log('output script string:');
+console.log(scriptOut.toString());
 
     
-    // tx.addData(); //add extra data
+   tx.addData(); //add extra data
     
 insight.broadcast(tx, function(err, returnedTxId){
   if (err){
