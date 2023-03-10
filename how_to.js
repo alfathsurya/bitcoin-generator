@@ -1,6 +1,6 @@
 //***** create a bitcoin address ******** //
 
-/*
+
 var bitcore = require('bitcore-lib');
 
 var rand_buffer = bitcore.crypto.Random.getRandomBuffer(32);
@@ -12,7 +12,7 @@ console.log('Your private key: ' + rand_number.toString());
 var address = new bitcore.PrivateKey(rand_number).toAddress();
 
 //test bitcoin network, a real wallet won't send to this network
-//var address = new bitcore.PrivateKey(rand_number).toAddress('testnet');
+var address = new bitcore.PrivateKey(rand_number).toAddress('testnet');
 
 console.log('Here is your address: ' + address);
 
@@ -39,7 +39,7 @@ console.log(address);
 //install bitcore-explorers to connect to bitcoin network
 //npm install bitcore-explorers --save
 //you may need to delete "bitcore-lib" folder from 
-node_modules/bitcore-explorers/node_modules otherwise you'll get the error:
+//node_modules/bitcore-explorers/node_modules otherwise you'll get the error:
 //Error: More than one instance of bitcore-lib found. Please make sure to require 
 // bitcore-lib and check that submodules do not also include their own bitcore-lib dependency.
 
@@ -77,4 +77,3 @@ insight.getUnspentUtxos(address, function(err, utxos){
 //bitcored
 //but this requires over 100 Gb and several days to setup!
 
-*/
